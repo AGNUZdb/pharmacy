@@ -1,0 +1,483 @@
+CREATE TABLE Availabilities ( 
+	availabilities_id int NOT NULL,
+	medicine_id int,
+	pharmacy_id int
+)
+;
+
+
+CREATE TABLE City ( 
+	city_id int NOT NULL,
+	city_name varchar(100),
+	country_id int
+)
+;
+
+CREATE TABLE Clients ( 
+	Client_id int NOT NULL,
+	client_name varchar(100),
+	client_diagnosis varchar(100),
+	pharmacy_id int
+)
+;
+
+CREATE TABLE Country ( 
+	country_id int NOT NULL,
+	country_name varchar(100)
+)
+;
+
+CREATE TABLE Information ( 
+	pharmacy_phone int NOT NULL,
+	pharmacy_address varchar(100),
+	pharmacy_id int
+)
+;
+
+CREATE TABLE manufacturer ( 
+	manufacturer_id int NOT NULL,
+	manufacturer_name varchar(100),
+	manufacturer_address varchar(100),
+	manufacturer_phone int
+)
+;
+select *from manufacturer
+
+CREATE TABLE medicine ( 
+	medicine_id int NOT NULL,
+	medicine_name varchar(100),
+	manufacturer_id int,
+	section_id int,
+	medicine_number int,
+	date_edition datetime
+)
+;
+
+CREATE TABLE order_ ( 
+	order_id int NOT NULL,
+	availabilities_id int,
+	staff_id int,
+	client_id int
+)
+;
+
+CREATE TABLE Payment ( 
+	payment_id int NOT NULL,
+	order_id int
+)
+;
+
+CREATE TABLE pharmacy ( 
+	pharmacy_id int NOT NULL,
+	pharmacy_name varchar(100),
+	city_id int
+)
+;
+
+CREATE TABLE Section ( 
+	section_id int NOT NULL,
+	section_name varchar(100),
+	pharmacy_id int NOT NULL
+)
+;
+
+CREATE TABLE staff ( 
+	staff_id int NOT NULL,
+	staff_name varchar(100),
+	Age int
+)
+;
+
+
+INSERT INTO Country (country_id,country_name)
+VALUES (1,'KAZAKHSTAN')
+INSERT INTO Country (country_id,country_name)
+VALUES(2,'USA')
+INSERT INTO Country (country_id,country_name)
+VALUES(3,'RUSSIA')
+
+
+
+
+INSERT INTO City (city_id,city_name,country_id)
+VALUES(4,'NUR-SULTAN',1)
+INSERT INTO City (city_id,city_name,country_id)
+VALUES (5,'ALMATY',1)
+INSERT INTO City (city_id,city_name,country_id)
+VALUES (6,'NEW YORK',2)
+INSERT INTO City (city_id,city_name,country_id)
+VALUES (7,'LA',2)
+INSERT INTO City (city_id,city_name,country_id)
+VALUES (8,'MOSCOW',3)
+INSERT INTO City (city_id,city_name,country_id)
+VALUES (9,'SANKT-PETERSBURG',3)
+
+
+INSERT INTO pharmacy (pharmacy_id,pharmacy_name,city_id)
+VALUES(10,'BIOSFERA',4)
+INSERT INTO pharmacy (pharmacy_id,pharmacy_name,city_id)
+VALUES(11, 'GIPPOKRAT',4)
+INSERT INTO pharmacy (pharmacy_id,pharmacy_name,city_id)
+VALUES(12,'EUROPHARMA',5)
+INSERT INTO pharmacy (pharmacy_id,pharmacy_name,city_id)
+VALUES(13, 'CENTRAL PHARMACY ¹2',5)
+INSERT INTO pharmacy (pharmacy_id,pharmacy_name,city_id)
+VALUES(14, 'APOLLO PHARMACY',6)
+INSERT INTO pharmacy (pharmacy_id,pharmacy_name,city_id)
+VALUES(15,'BROADWAY PHARMACY',6)
+INSERT INTO pharmacy (pharmacy_id,pharmacy_name,city_id)
+VALUES(16, 'CVS PHARMACY',7)
+INSERT INTO pharmacy (pharmacy_id,pharmacy_name,city_id)
+VALUES(17, 'IDEAL PHARMACY CHAIN',7)
+INSERT INTO pharmacy (pharmacy_id,pharmacy_name,city_id)
+VALUES(18, 'MEDICINE FOR YOU',8)
+INSERT INTO pharmacy (pharmacy_id,pharmacy_name,city_id)
+VALUES(19, 'METROPOLITAN PHARMACY',8)
+INSERT INTO pharmacy (pharmacy_id,pharmacy_name,city_id)
+VALUES(20, 'CITY HEALTH',9)
+INSERT INTO pharmacy (pharmacy_id,pharmacy_name,city_id)
+VALUES(21, 'ST PETERSBURG PHARMACIES',9)
+
+
+
+INSERT INTO Clients (Client_id,client_name,client_diagnosis,pharmacy_id)
+VALUES(22,'AYGERIM','HEART DISEASES',10)
+INSERT INTO Clients (Client_id,client_name,client_diagnosis,pharmacy_id)
+VALUES(23,'GULZHAINASH','FLU',11)
+INSERT INTO Clients (Client_id,client_name,client_diagnosis,pharmacy_id)
+VALUES(24, 'ZHANAT', 'SCOLIOSIS', 12)
+INSERT INTO Clients (Client_id,client_name,client_diagnosis,pharmacy_id)
+VALUES(25, 'KHANZADA', 'ALLERGY',13)
+INSERT INTO Clients (Client_id,client_name,client_diagnosis,pharmacy_id)
+VALUES(26,'AZHAR', 'OSTEOCHONDROSIS',14)
+INSERT INTO Clients (Client_id,client_name,client_diagnosis,pharmacy_id)
+VALUES(27,'YELDOS', 'SCLEROSIS',15)
+INSERT INTO Clients (Client_id,client_name,client_diagnosis,pharmacy_id)
+VALUES(28, 'DANA', 'ANGINA',16)
+INSERT INTO Clients (Client_id,client_name,client_diagnosis,pharmacy_id)
+VALUES(29,'NAZERKE', 'HEART ATTACK',17)
+INSERT INTO Clients (Client_id,client_name,client_diagnosis,pharmacy_id)
+VALUES(30, 'NURDAULET','ATHEROSCLEROSIS',18)
+INSERT INTO Clients (Client_id,client_name,client_diagnosis,pharmacy_id)
+VALUES(31, 'YERKEBULAN', 'ACNE',19)
+INSERT INTO Clients (Client_id,client_name,client_diagnosis,pharmacy_id)
+VALUES(32, 'ULZHAN', 'ARTHRITIS',20)
+INSERT INTO Clients (Client_id,client_name,client_diagnosis,pharmacy_id)
+VALUES(33, 'ZHADYRA','MIGRAINE',21)
+
+
+INSERT INTO Information (pharmacy_phone,pharmacy_address,pharmacy_id)
+VALUES(8-701-026-1231,'SAKEN SEYFULLINA 29',10)
+INSERT INTO Information (pharmacy_phone,pharmacy_address,pharmacy_id)
+VALUES(8-777-822-7496, 'AVENUE REPUBLIC  45',11)
+INSERT INTO Information (pharmacy_phone,pharmacy_address,pharmacy_id)
+VALUES(8-727-312-2220, 'AVENUE ABAI 139',12)
+INSERT INTO Information (pharmacy_phone,pharmacy_address,pharmacy_id)
+VALUES(8-7272-73-0707, 'NAZARBAYEVA 91', 13)
+INSERT INTO Information (pharmacy_phone,pharmacy_address,pharmacy_id)
+VALUES(+7-495-730-5300, 'CANAL ST.SUITE 101 ', 14)
+INSERT INTO Information (pharmacy_phone,pharmacy_address,pharmacy_id)
+VALUES(212-296-9800, '1ST. AVENUE 206', 15)
+INSERT INTO Information (pharmacy_phone,pharmacy_address,pharmacy_id)
+VALUES(+1-310-360-7303, '8491 SANTA MONICA',16)
+INSERT INTO Information (pharmacy_phone,pharmacy_address,pharmacy_id)
+VALUES(+1-305-558-3551, '7245 US-31', 17)
+INSERT INTO Information (pharmacy_phone,pharmacy_address,pharmacy_id)
+VALUES(+7-495-432-2390, 'VERNADSKOGO 32', 18)
+INSERT INTO Information (pharmacy_phone,pharmacy_address,pharmacy_id)
+VALUES(+7-495-508-7365, 'SOLNTSEVSKYI 11', 19)
+INSERT INTO Information (pharmacy_phone,pharmacy_address,pharmacy_id)
+VALUES(+7-812-635-5563, 'ROSTOVASKAYA 58/8', 20)
+INSERT INTO Information (pharmacy_phone,pharmacy_address,pharmacy_id)
+VALUES(+7-812-323-1942, 'VASILEVSKOGO 30/32', 21)
+
+
+INSERT INTO staff (staff_id,staff_name,Age)
+VALUES(46,'KARLYGASH',17)
+INSERT INTO staff (staff_id,staff_name,Age)
+VALUES(47,'ARMAN',19)
+INSERT INTO staff (staff_id,staff_name,Age)
+VALUES(48, 'ASLAN',20)
+INSERT INTO staff (staff_id,staff_name,Age)
+VALUES(49, 'BOTA',18)
+INSERT INTO staff (staff_id,staff_name,Age)
+VALUES(50,'SERIK',23)
+INSERT INTO staff (staff_id,staff_name,Age)
+VALUES(51,'AKERKE',28)
+INSERT INTO staff (staff_id,staff_name,Age)
+VALUES(52, 'ABZAL',30)
+INSERT INTO staff (staff_id,staff_name,Age)
+VALUES(53, 'AYDANA',35)
+INSERT INTO staff (staff_id,staff_name,Age)
+VALUES(54, 'ZHIBEK',26)
+INSERT INTO staff (staff_id,staff_name,Age)
+VALUES(55, 'DIAS',32)
+INSERT INTO staff (staff_id,staff_name,Age)
+VALUES(56, 'DIDAR',30)
+INSERT INTO staff (staff_id,staff_name,Age)
+VALUES(57,'DASTAN',24)
+
+
+INSERT INTO order_(order_id,availabilities_id,staff_id,client_id)
+VALUES(58,101,46,22)
+INSERT INTO order_(order_id,availabilities_id,staff_id,client_id)
+VALUES(59,102,47,23)
+INSERT INTO order_(order_id,availabilities_id,staff_id,client_id)
+VALUES(60,103,48,24)
+INSERT INTO order_(order_id,availabilities_id,staff_id,client_id)
+VALUES(61,104,49,25)
+INSERT INTO order_(order_id,availabilities_id,staff_id,client_id)
+VALUES(62,105,50,26)
+INSERT INTO order_(order_id,availabilities_id,staff_id,client_id)
+VALUES(63,106,51,27)
+INSERT INTO order_(order_id,availabilities_id,staff_id,client_id)
+VALUES(64,107,52,28)
+INSERT INTO order_(order_id,availabilities_id,staff_id,client_id)
+VALUES(65,108,53,29)
+INSERT INTO order_(order_id,availabilities_id,staff_id,client_id)
+VALUES(66,109,54,30)
+INSERT INTO order_(order_id,availabilities_id,staff_id,client_id)
+VALUES(67,110,55,31)
+INSERT INTO order_(order_id,availabilities_id,staff_id,client_id)
+VALUES(68,111,56,32)
+INSERT INTO order_(order_id,availabilities_id,staff_id,client_id)
+VALUES(69,112,57,33)
+
+
+INSERT INTO Availabilities (availabilities_id,medicine_id, pharmacy_id)
+VALUES(101,221,10)
+INSERT INTO Availabilities (availabilities_id,medicine_id, pharmacy_id)
+VALUES(102,222,11)
+INSERT INTO Availabilities (availabilities_id,medicine_id, pharmacy_id)
+VALUES(103,223,12)
+INSERT INTO Availabilities (availabilities_id,medicine_id, pharmacy_id)
+VALUES(104,224,13)
+INSERT INTO Availabilities (availabilities_id,medicine_id, pharmacy_id)
+VALUES(105,225,14)
+INSERT INTO Availabilities (availabilities_id,medicine_id, pharmacy_id)
+VALUES(106,226,15)
+INSERT INTO Availabilities (availabilities_id,medicine_id, pharmacy_id)
+VALUES(107,227,16)
+INSERT INTO Availabilities (availabilities_id,medicine_id, pharmacy_id)
+VALUES(109,229,18)
+INSERT INTO Availabilities (availabilities_id,medicine_id, pharmacy_id)
+VALUES(110,230,19)
+INSERT INTO Availabilities (availabilities_id,medicine_id, pharmacy_id)
+VALUES(111,231,20)
+INSERT INTO Availabilities (availabilities_id,medicine_id, pharmacy_id)
+VALUES(112,232,21)
+
+
+
+INSERT INTO manufacturer(manufacturer_id, manufacturer_name,manufacturer_address,manufacturer_phone)
+VALUES(121, 'ABBOTT  LABORATORIES', 'KHODZHANOVA 92',8-7272-44-75-44)
+INSERT INTO manufacturer(manufacturer_id, manufacturer_name,manufacturer_address,manufacturer_phone)
+VALUES (122, 'ANGELINI', 'TREKHPRUDNYI 9', 495-399-39-50)
+INSERT INTO manufacturer(manufacturer_id, manufacturer_name,manufacturer_address,manufacturer_phone)
+VALUES(123, 'BAYER AG', 'TIMIRYAZEVA 42', +7-727-258-80-40)
+INSERT INTO manufacturer(manufacturer_id, manufacturer_name,manufacturer_address,manufacturer_phone)
+VALUES(124, 'BELUPO', 'ZHELTOKSAN 87',8-7272-2501-61)
+INSERT INTO manufacturer(manufacturer_id, manufacturer_name,manufacturer_address,manufacturer_phone)
+VALUES(125, 'BESINS' ,'GALERIE LOUISE 287', 32-26493277)
+INSERT INTO manufacturer(manufacturer_id, manufacturer_name,manufacturer_address,manufacturer_phone)
+VALUES(126, 'BIONORICA', 'NOVYIE SADYI 2', +7-495-502-90-19)
+INSERT INTO manufacturer(manufacturer_id, manufacturer_name,manufacturer_address,manufacturer_phone)
+VALUES(127, 'ESPARMA GMBH', 'LETNIKOVSKAYA 16', +7-499-579-33-70)
+INSERT INTO manufacturer(manufacturer_id, manufacturer_name,manufacturer_address,manufacturer_phone)
+VALUES(128, 'LILLY','PRESNENSKAYA 10', +7-495-258-50-01)
+INSERT INTO manufacturer(manufacturer_id, manufacturer_name,manufacturer_address,manufacturer_phone)
+VALUES(129, 'MONTAVIT', 'SALZBERGSTRABE 96',43-5223-57926)
+INSERT INTO manufacturer(manufacturer_id, manufacturer_name,manufacturer_address,manufacturer_phone)
+VALUES(130, 'STADA', 'POSTFACH 12/60', 49-06101-603-0)
+INSERT INTO manufacturer(manufacturer_id, manufacturer_name,manufacturer_address,manufacturer_phone)
+VALUES(131, 'TEVA', '1090 HORSHAM ROAD NORTH WALES',1-888-838-2872)
+INSERT INTO manufacturer(manufacturer_id, manufacturer_name,manufacturer_address,manufacturer_phone)
+VALUES(132, 'MEDAC',' THEATERSTR 6',49-0-4103-8006-0)
+
+
+
+INSERT INTO Payment (payment_id,order_id)
+VALUES(151,58)
+INSERT INTO Payment (payment_id,order_id)
+VALUES(152,59)
+INSERT INTO Payment (payment_id,order_id)
+VALUES(153,60)
+INSERT INTO Payment (payment_id,order_id)
+VALUES(154,61)
+INSERT INTO Payment (payment_id,order_id)
+VALUES(155,62)
+INSERT INTO Payment (payment_id,order_id)
+VALUES(156,63)
+INSERT INTO Payment (payment_id,order_id)
+VALUES(157,64)
+INSERT INTO Payment (payment_id,order_id)
+VALUES(158,65)
+INSERT INTO Payment (payment_id,order_id)
+VALUES(159,66)
+INSERT INTO Payment (payment_id,order_id)
+VALUES(160,67)
+INSERT INTO Payment (payment_id,order_id)
+VALUES(161,68)
+INSERT INTO Payment (payment_id,order_id)
+VALUES(162,69)
+select *from Payment
+
+
+INSERT INTO medicine (medicine_id,medicine_name,manufacturer_id,section_id,date_edition,medicine_number)
+VALUES(221,'PRACETAMOL',121,251,'15/11/2020',425)
+INSERT INTO medicine (medicine_id,medicine_name,manufacturer_id,section_id,date_edition,medicine_number)
+VALUES(222,'BUDESONIDE',122,252,'22/12/2019',256)
+INSERT INTO medicine (medicine_id,medicine_name,manufacturer_id,section_id,date_edition,medicine_number)
+VALUES(223,'GABAPENTIN',123,253,'25/10/2021',123)
+INSERT INTO medicine (medicine_id,medicine_name,manufacturer_id,section_id,date_edition,medicine_number)
+VALUES(224,'DONEPEZIL',124,254,'16/12/2020',325)
+INSERT INTO medicine (medicine_id,medicine_name,manufacturer_id,section_id,date_edition,medicine_number)
+VALUES(225,'BRIMONIDINE',125,255,'03/08/2020',126)
+INSERT INTO medicine (medicine_id,medicine_name,manufacturer_id,section_id,date_edition,medicine_number)
+VALUES(226,'ALENDRONATE',126,256,'04/09/2022',246)
+INSERT INTO medicine (medicine_id,medicine_name,manufacturer_id,section_id,date_edition,medicine_number)
+VALUES(227,'ETODOLAC',127,257,'07/05/2022',365)
+INSERT INTO medicine (medicine_id,medicine_name,manufacturer_id,section_id,date_edition,medicine_number)
+VALUES(229,'OMEPRAZOLE',129,259,'09/01/2021',436)
+INSERT INTO medicine (medicine_id,medicine_name,manufacturer_id,section_id,date_edition,medicine_number)
+VALUES(230, 'ALFUZOSIN',130,260,'10/07/2022',75)
+INSERT INTO medicine (medicine_id,medicine_name,manufacturer_id,section_id,date_edition,medicine_number)
+VALUES(231, 'ERYTHROMYCIN',131,261,'19/05/2021',163)
+INSERT INTO medicine (medicine_id,medicine_name,manufacturer_id,section_id,date_edition,medicine_number)
+VALUES(232, 'TRIETHANOLAMINE',132,262,'14/12/2022',296)
+
+
+
+INSERT INTO Section (section_id,section_name,pharmacy_id)
+VALUES(251,'FOR THE STOMACH',10)
+INSERT INTO Section (section_id,section_name,pharmacy_id)
+VALUES(252,'FOR THE HEAD',11)
+INSERT INTO Section (section_id,section_name,pharmacy_id)
+VALUES(253,'FOR HEART',12)
+INSERT INTO Section (section_id,section_name,pharmacy_id)
+VALUES(254,'FOR THE LIVER',13)
+INSERT INTO Section (section_id,section_name,pharmacy_id)
+VALUES(255,'FOR THE SPINE',14)
+INSERT INTO Section (section_id,section_name,pharmacy_id)
+VALUES(256,'FOR THROAT',15)
+INSERT INTO Section (section_id,section_name,pharmacy_id)
+VALUES(257,'FOR TOOTH',16)
+INSERT INTO Section (section_id,section_name,pharmacy_id)
+VALUES(258,'FOR EYES',17)
+INSERT INTO Section (section_id,section_name,pharmacy_id)
+VALUES(259, 'FOR LUNGS', 18)
+INSERT INTO Section (section_id,section_name,pharmacy_id)
+VALUES(260, 'FOR A COLD',19)
+INSERT INTO Section (section_id,section_name,pharmacy_id)
+VALUES(261, 'FOR FLU',20)
+INSERT INTO Section (section_id,section_name,pharmacy_id)
+VALUES(262, 'FOR ALLERGIES',21)
+
+ALTER TABLE Availabilities ADD CONSTRAINT PK_Availabilities 
+	PRIMARY KEY (availabilities_id)
+;
+
+ALTER TABLE City ADD CONSTRAINT PK_City 
+	PRIMARY KEY (city_id)
+;
+
+ALTER TABLE Clients ADD CONSTRAINT PK_Clients 
+	PRIMARY KEY (Client_id)
+;
+
+ALTER TABLE Country ADD CONSTRAINT PK_Country 
+	PRIMARY KEY (country_id)
+;
+
+ALTER TABLE Information ADD CONSTRAINT PK_Information 
+	PRIMARY KEY (pharmacy_phone)
+;
+
+ALTER TABLE manufacturer ADD CONSTRAINT PK_manufacturer 
+	PRIMARY KEY (manufacturer_id)
+;
+
+ALTER TABLE medicine ADD CONSTRAINT PK_medicine 
+	PRIMARY KEY (medicine_id)
+;
+
+ALTER TABLE order_ ADD CONSTRAINT PK_Order 
+	PRIMARY KEY (order_id)
+;
+
+ALTER TABLE Payment ADD CONSTRAINT PK_Payment 
+	PRIMARY KEY (payment_id)
+;
+
+ALTER TABLE pharmacy ADD CONSTRAINT PK_pharmacy 
+	PRIMARY KEY (pharmacy_id)
+;
+
+ALTER TABLE Section ADD CONSTRAINT PK_Section 
+	PRIMARY KEY (section_id)
+;
+
+ALTER TABLE staff ADD CONSTRAINT PK_staff 
+	PRIMARY KEY (staff_id)
+;
+
+
+
+
+ALTER TABLE Availabilities ADD CONSTRAINT FK_Availabilities_pharmacy 
+	FOREIGN KEY (pharmacy_id) REFERENCES pharmacy (pharmacy_id)
+;
+
+ALTER TABLE Availabilities ADD CONSTRAINT FK_Availabilities_medicine 
+	FOREIGN KEY (medicine_id) REFERENCES medicine(medicine_id)
+;
+
+ALTER TABLE City ADD CONSTRAINT FK_City_Country 
+	FOREIGN KEY (country_id) REFERENCES Country (country_id)
+;
+
+ALTER TABLE Information ADD CONSTRAINT FK_Information_pharmacy 
+	FOREIGN KEY (pharmacy_id) REFERENCES pharmacy (pharmacy_id)
+;
+
+ALTER TABLE medicine ADD CONSTRAINT FK_medicine_manufacturer 
+	FOREIGN KEY (manufacturer_id) REFERENCES manufacturer (manufacturer_id)
+;
+
+ALTER TABLE medicine ADD CONSTRAINT FK_medicine_Section 
+	FOREIGN KEY (section_id) REFERENCES Section (section_id)
+;
+
+ALTER TABLE order_ ADD CONSTRAINT FK_Order_Clients 
+	FOREIGN KEY (client_id) REFERENCES Clients (Client_id)
+;
+
+ALTER TABLE order_ ADD CONSTRAINT FK_Order_staff 
+	FOREIGN KEY (staff_id) REFERENCES staff (staff_id)
+;
+
+ALTER TABLE Payment ADD CONSTRAINT FK_Payment_Order 
+	FOREIGN KEY (order_id) REFERENCES order_ (order_id)
+;
+
+ALTER TABLE pharmacy ADD CONSTRAINT FK_pharmacy_City 
+	FOREIGN KEY (city_id) REFERENCES City (city_id)
+;
+
+ALTER TABLE Section ADD CONSTRAINT FK_Section_pharmacy 
+	FOREIGN KEY (pharmacy_id) REFERENCES pharmacy (pharmacy_id);
+
+
+
+
+
+
+
+ALTER TABLE medicine
+ADD CONSTRAINT VBN
+DEFAULT GETDATE()FOR date_edition
+
+
+
+alter table medicine 
+ADD CHECK (medicine_number>=1 and medicine_number<=500)
